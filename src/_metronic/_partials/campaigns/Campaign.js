@@ -23,6 +23,7 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import { Grid } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   
     media: {
@@ -109,8 +110,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -208,8 +209,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -307,8 +308,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -407,8 +408,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -504,8 +505,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -601,8 +602,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -701,8 +702,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -798,8 +799,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}> <NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>
@@ -895,8 +896,8 @@ export function  Campaign() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}> <VisibilityOutlinedIcon color="primary"/></MenuItem>
-              <MenuItem onClick={handleClose}><EditOutlinedIcon color="primary"/></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink className="menu-link" to='/videos'> <VisibilityOutlinedIcon  color="primary"/></NavLink></MenuItem>
+              <MenuItem onClick={handleClose}><NavLink to='/editreview'><EditOutlinedIcon color="primary"/></NavLink></MenuItem>
               <MenuItem onClick={handleClose}><DeleteOutlineOutlinedIcon className={classes.icons}/></MenuItem>
               
             </Menu>

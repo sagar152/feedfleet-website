@@ -9,6 +9,7 @@ import { CampaignPage } from "./pages/ReviewCampagin";
 import {CreatePage} from './pages/CreateCampagin'
 import {EditPage} from './pages/Editpage';
 import { VideoPage} from './pages/Videopage'
+import {Replypage} from './pages/Replypage'
 const GoogleMaterialPage = lazy(() =>
   import("./modules/GoogleMaterialExamples/GoogleMaterialPage")
 );
@@ -43,6 +44,7 @@ export default function BasePage() {
         <Route path='/editreview' component={EditPage} />
         <Route path='/create-campaign' component={CreatePage} />
         <Route path="/videos" component={VideoPage} />
+        <Route path='/reply' component={Replypage} />
         <ContentRoute path="/builder" component={BuilderPage} />
         <ContentRoute path="/my-page" component={MyPage} />
         <Route path="/google-material" component={GoogleMaterialPage} />
