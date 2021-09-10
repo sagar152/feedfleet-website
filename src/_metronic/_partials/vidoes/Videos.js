@@ -33,6 +33,17 @@ import { Fab } from '@material-ui/core';
 import ReplyIcon from '@material-ui/icons/Reply';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { TextField } from '@material-ui/core';
+import { Icon } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { Popover } from '@material-ui/core';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import MailIcon from '@material-ui/icons/Mail';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkIcon from '@material-ui/icons/Link';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { Chip } from '@material-ui/core';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 // const player = new Plyr('#player');
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -97,21 +108,21 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#e65252",
         color: 'white'
     },
-   reply: {
+    reply: {
         // display: 'flex',
         // alignItems: 'center',
         // justifyContent: 'center',
-        width:'80%',
-        margin:'10rem auto'
-      },
-      replypaper: {
+        width: '80%',
+        margin: '10rem auto'
+    },
+    replypaper: {
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
-        width:'80%',
-        margin:'1.5rem auto'
+        width: '80%',
+        margin: '1.5rem auto'
         // padding: theme.spacing(2, 4, 3),
-      },
+    },
 }));
 
 export function Videos() {
@@ -214,12 +225,26 @@ export function Videos() {
     const [reply, setReply] = useState(false);
 
     const replyOpen = () => {
-      setReply(true);
+        setReply(true);
     };
-  
+
     const replyClose = () => {
-      setReply(false);
+        setReply(false);
     };
+
+
+    const [shareEl, setShareEl] = React.useState(null);
+
+    const shareClick = (event) => {
+        setShareEl(event.currentTarget);
+    };
+
+    const shareClose = () => {
+        setShareEl(null);
+    };
+
+    const shareopen = Boolean(shareEl);
+    const id = shareopen ? 'simple-popover' : undefined;
     return (
         <>
             <div className={classes.root}>
@@ -340,7 +365,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -355,28 +409,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -498,7 +559,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -513,28 +603,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -653,7 +750,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -668,28 +794,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -810,7 +943,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -825,28 +987,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -934,7 +1103,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -949,28 +1147,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -1104,28 +1309,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -1246,7 +1458,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -1261,28 +1502,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -1400,7 +1648,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -1415,28 +1692,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -1547,7 +1831,36 @@ export function Videos() {
                                     <FavoriteIcon />
                                 </IconButton>
                                 <IconButton aria-label="share">
-                                    <ShareIcon />
+                                    <ShareIcon aria-describedby={id} variant="contained" color="primary" onClick={shareClick} />
+                                    <Popover
+                                        id={id}
+                                        open={shareopen}
+                                        anchorEl={shareEl}
+                                        onClose={shareClose}
+                                        anchorOrigin={{
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }}
+
+                                    >
+
+
+                                        <Typography style={{ display: 'flex', margin: '15px 15px' }} className={classes.typography}>
+                                            <Avatar style={{ backgroundColor: '#00e676', marginLeft: '20px' }}><a href="https://web.whatsapp.com/send?text=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <WhatsAppIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#3B5998', marginLeft: '11px' }}><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <FacebookIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#dd4b39', marginLeft: '11px' }}><a href="mailto:?subject=Review&body=Check out this site https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <MailIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#55ACEE', marginLeft: '11px' }}><a href="https://twitter.com/share?text=Feedfleet&url=https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <TwitterIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#8c3c3c', marginLeft: '11px' }}><a href="https://www.feedfleet.com/shareVideo/Mg==/MQ=="> <LinkIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+                                            <Avatar style={{ backgroundColor: '#007bb5', marginLeft: '11px' }}><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.feedfleet.com%2FshareVideo%2FMg%3D%3D%2FMQ%3D%3D"> <LinkedInIcon style={{ width: '30px', height: '30px', color: 'white' }} /></a></Avatar>
+
+
+                                        </Typography>
+
+                                    </Popover>
                                 </IconButton>
                                 <IconButton
                                     className={clsx(classes.expand, {
@@ -1562,28 +1875,35 @@ export function Videos() {
                             </CardActions>
                             <Collapse in={expanded} timeout="auto" unmountOnExit>
                                 <CardContent>
-                                    <Typography paragraph>Method:</Typography>
+                                    <Typography variant="h6" component="h6" style={{ color: '#047bf8', fontWeight: '500', fontSize: '16px' }}>MOBILE APPLICATION REVIEW</Typography>
                                     <Typography paragraph>
-                                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                                        minutes.
+                                        Hello,
                                     </Typography>
                                     <Typography paragraph>
-                                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-                                        and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-                                        pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-                                        saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                                        Thanks for choosing us between multiple options you have. If you like our services & have a few minutes today, we would love to get your feedback on your experience. Feel free to share anything that comes to mind about our services. :)
                                     </Typography>
                                     <Typography paragraph>
-                                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-                                        medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-                                        again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                                        minutes more. (Discard any mussels that don’t open.)
+                                        In the meantime, please reach out if you have any questions.
+                                        <br></br><br></br><br></br>
+                                        Thanks
                                     </Typography>
-                                    <Typography>
-                                        Set aside off of the heat to let rest for 10 minutes, and then serve.
+                                    <Typography paragraph style={{ color: '#afafaf' }}>
+                                        User Agreement  <CheckCircleIcon style={{ color: 'green' }} />  <Chip
+
+                                            label="Signed 08-10-2020"
+                                            style={{ float: 'right' }}
+                                            clickable
+                                            color="primary"
+
+
+                                            variant="outlined"
+                                        />
+                                    </Typography>
+                                    <Typography paragraph style={{ fontWeight: '700', lineHeight: '25px' }}>
+                                        <br></br> <br></br>
+                                        Name : David Oabile  <br></br>
+                                        Email : david@splitchek.com <br></br>
+                                        Phone : 0438124236
                                     </Typography>
                                 </CardContent>
                             </Collapse>
@@ -1592,37 +1912,52 @@ export function Videos() {
 
                 </Grid>
                 <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.reply}
-        open={reply}
-        onClose={replyClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={reply}>
-          <div className={classes.replypaper}>
-          <Grid container >
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-              <h4 textAlign='center'>Add Reply</h4>
-          <form className={classes.root} noValidate autoComplete="off">
-              <div style={{ padding:"8px 20px"}}>
-              <TextField id="standard-basic" label="Standard" style={{width:"100%" }} />
-              </div>
- 
- 
-</form>
-          </Paper>
-        </Grid>
-        </Grid> 
-          </div>
-        </Fade>
-      </Modal>
-              
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    className={classes.reply}
+                    open={reply}
+                    onClose={replyClose}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 500,
+                    }}
+                >
+                    <Fade in={reply}>
+                        <div className={classes.replypaper}>
+                            <Grid container >
+                                <Grid item xs={12}>
+                                    <Paper className={classes.paper}>
+                                        <h4 textAlign='center'>Add Reply</h4>
+                                        <form className={classes.root} noValidate autoComplete="off">
+                                            <div style={{ padding: "8px 20px" }}>
+                                                <TextField id="standard-basic" label="Standard" style={{ width: "100%" }} />
+                                            </div>
+
+                                            <label htmlFor="maximum height" style={{ marginTop: '5px', textAlign: 'left', paddingLeft: '20px', }}>Message</label>
+                                            <div class="wrap-input100 validate-input" data-validate="Please enter your message" >
+                                                <textarea class="input100" name="message" placeholder="Your Message"></textarea>
+                                                <span class="focus-input100"></span>
+                                            </div>
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                className={classes.button}
+                                                endIcon={<Icon>send</Icon>}
+                                            >
+                                                Send
+                                            </Button>
+
+
+
+                                        </form>
+                                    </Paper>
+                                </Grid>
+                            </Grid>
+                        </div>
+                    </Fade>
+                </Modal>
+
             </div>
 
         </>
